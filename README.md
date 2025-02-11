@@ -6,12 +6,13 @@
 - Name: global-mangrove-watch
 - Package: `stactools.global_mangrove_watch`
 - [stactools-global-mangrove-watch on PyPI](https://pypi.org/project/stactools-global-mangrove-watch/)
-- Owner: @githubusername
-- [Dataset homepage](http://example.com)
+- Owner: @hrodmn
+- [Dataset homepage](https://zenodo.org/records/6894273)
 - STAC extensions used:
   - [proj](https://github.com/stac-extensions/projection/)
-- Extra fields:
-  - `global-mangrove-watch:custom`: A custom attribute
+  - [version](https://github.com/stac-extensions/version/)
+  - [scientific](https://github.com/stac-extensions/scientific/)
+  - [render](https://github.com/stac-extensions/render/)
 - [Browse the example in human-readable form](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/stactools-packages/global-mangrove-watch/main/examples/collection.json)
 - [Browse a notebook demonstrating the example item and collection](https://github.com/stactools-packages/global-mangrove-watch/tree/main/docs/example.ipynb)
 

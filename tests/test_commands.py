@@ -28,7 +28,7 @@ def test_create_item(tmp_path: Path) -> None:
     # Smoke test for the command line create-item command
     #
     # Most checks should be done in test_stac.py::test_create_item
-    asset_href = test_data.get_path("data/asset.tif")
+    asset_href = test_data.get_path("data/GMW_N26W082_2020_v3.tif")
     path = str(tmp_path / "item.json")
     runner = CliRunner()
     result = runner.invoke(command, ["create-item", asset_href, path])

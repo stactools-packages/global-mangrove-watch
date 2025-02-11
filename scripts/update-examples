@@ -12,7 +12,10 @@ examples = root / "examples"
 
 collection = stactools.global_mangrove_watch.stac.create_collection()
 item = stactools.global_mangrove_watch.stac.create_item(
-    str(root / "tests" / "data" / "asset.tif")
+    cog_asset_href=str(root / "tests" / "data" / "GMW_N26W082_2020_v3.tif"),
+    change_asset_href=str(
+        root / "tests" / "data" / "GMW_N26W082_chng_f1996_t2020_v3.tif"
+    ),
 )
 collection.add_item(item)
 collection.update_extent_from_items()
