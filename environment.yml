@@ -1,4 +1,4 @@
-name: stactools-ephemeral
+name: stactools-global-mangrove-watch
 channels:
   - conda-forge
   - defaults

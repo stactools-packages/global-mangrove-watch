@@ -1,4 +1,4 @@
-from stactools.ephemeral import stac
+from stactools.global_mangrove_watch import stac
 
 from . import test_data
 
