@@ -1,4 +1,4 @@
-from stactools.global_mangrove_watch import stac
+from stactools.global_mangrove_watch import constants, stac
 
 from . import test_data
 
@@ -9,7 +9,7 @@ def test_create_collection() -> None:
 
     collection = stac.create_collection()
     collection.set_self_href(None)  # required for validation to pass
-    assert collection.id == stac.COLLECTION_ID
+    assert collection.id == constants.COLLECTION_ID
     collection.validate()
 
 

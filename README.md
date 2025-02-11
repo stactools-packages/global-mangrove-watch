@@ -37,10 +37,16 @@ pip install stactools-global-mangrove-watch
 
 ## Command-line usage
 
-Description of the command line functions
+Create a collection json:
 
 ```shell
-stac global-mangrove-watch create-item source destination
+stac global-mangrove-watch create-collection {destination}
+```
+
+Create an item json:
+
+```shell
+stac global-mangrove-watch create-item {cog_asset_href} {destination}
 ```
 
 Use `stac global-mangrove-watch --help` to see all subcommands and options.
