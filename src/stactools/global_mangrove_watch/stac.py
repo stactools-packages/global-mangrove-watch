@@ -57,6 +57,10 @@ def parse_gmw_filename(cog_basename: str) -> Dict[str, Any] | None:
         return None
 
 
+def rgb_to_hex(r: int, g: int, b: int) -> str:
+    return "{:02x}{:02x}{:02x}".format(r, g, b)
+
+
 VERSION = "3.0"
 COLLECTION_ID = f"global-mangrove-watch-{VERSION}"
 TITLE = "Global Mangrove Watch (1996 - 2020) Version 3.0 Dataset"
@@ -118,6 +122,17 @@ ITEM_ASSETS = {
         media_type=MediaType.COG.value,
         roles=["data"],
     ),
+}
+
+# RGB values from the color table in the COGs
+COLOR_HINTS = {
+    COG_ASSET_NAME: {
+        1: (0, 150, 0),
+    },
+    CHANGE_ASSET_NAME: {
+        1: (255, 0, 0),
+        2: (0, 0, 255),
+    },
 }
 
 
@@ -191,7 +206,7 @@ def create_collection() -> Collection:
             value=1,
             description="mangrove",
             name="mangrove",
-            color_hint="009600",
+            color_hint=rgb_to_hex(*COLOR_HINTS[COG_ASSET_NAME][1]),
         ),
     ]
 
@@ -209,13 +224,13 @@ def create_collection() -> Collection:
             value=1,
             description="mangrove gained",
             name="mangrove-gained",
-            color_hint="ff0000",
+            color_hint=rgb_to_hex(*COLOR_HINTS[CHANGE_ASSET_NAME][1]),
         ),
         Classification.create(
             value=2,
             description="mangrove lost",
             name="mangrove-lost",
-            color_hint="0000ff",
+            color_hint=rgb_to_hex(*COLOR_HINTS[CHANGE_ASSET_NAME][2]),
         ),
     ]
 
@@ -243,23 +258,13 @@ def create_collection() -> Collection:
         "mangroves": Render.create(
             assets=[COG_ASSET_NAME],
             colormap={
-                # convert hex to rgb
-                str(classification.value): tuple(
-                    int(classification.color_hint[i : i + 2], 16) for i in (0, 2, 4)
-                )
-                for classification in cog_classification.classes
-                if classification.color_hint
+                str(value): rgb for value, rgb in COLOR_HINTS[COG_ASSET_NAME].items()
             },
         ),
         "change": Render.create(
             assets=[CHANGE_ASSET_NAME],
             colormap={
-                # convert hex to rgb
-                str(classification.value): tuple(
-                    int(classification.color_hint[i : i + 2], 16) for i in (0, 2, 4)
-                )
-                for classification in change_classification.classes
-                if classification.color_hint
+                str(value): rgb for value, rgb in COLOR_HINTS[CHANGE_ASSET_NAME].items()
             },
         ),
     }
@@ -269,12 +274,26 @@ def create_collection() -> Collection:
     return collection
 
 
-def create_item(cog_asset_href: str, change_asset_href: Optional[str] = None) -> Item:
+def create_item(
+    cog_asset_href: str,
+    change_asset_href: Optional[str] = None,
+    vector_asset_href: Optional[str] = None,
+    change_vector_asset_href: Optional[str] = None,
+) -> Item:
     """Creates a STAC item from a asset href.
+
+    NOTE: The vector files will not be added as assets but the args are included as
+        placeholders for future support.
 
     Args:
         cog_asset_href (str): The HREF pointing to the COG asset associated with the
-        item
+            item
+        change_asset_href (str): Optional, The HREF pointing to the mangrove change COG
+            asset associated with the item
+        vector_asset_href (str): Optional, the HREF pointing to the vector file
+            associated with the item
+        change_vector_asset_href (str): Optional, the HREF pointing to the mangrove
+            change vector file associated with the item
 
     Returns:
         Item: STAC Item object

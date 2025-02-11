@@ -11,7 +11,7 @@ number as needed.
 
 ### Added
 
-- Nothing.
+- STAC metadata capabilities for the raster assets ([#1](https://github.com/stactools-packages/global-mangrove-watch/pull/1))
 
 ### Deprecated
 

@@ -16,7 +16,13 @@
 - [Browse the example in human-readable form](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/stactools-packages/global-mangrove-watch/main/examples/collection.json)
 - [Browse a notebook demonstrating the example item and collection](https://github.com/stactools-packages/global-mangrove-watch/tree/main/docs/example.ipynb)
 
-A short description of the package and its usage.
+This package can be used to generate STAC metadata for the [Global Mangrove Watch Dataset](https://zenodo.org/records/6894273).
+
+## Details
+
+- It is assumed that the raw files have been downloaded from the source and unzipped in a persistent storage location in order to provide proper `hrefs` for the STAC assets.
+- Each item represents a particular year (1996, 2007, 2008, etc) with assets for the annual mangrove mask raster (`cog`) and the 1996-`{year}` change raster (`change_cog`).
+  - The vector files are not yet added as assets
 
 ## STAC examples
 

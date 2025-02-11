@@ -18,7 +18,6 @@ item = stactools.global_mangrove_watch.stac.create_item(
     ),
 )
 collection.add_item(item)
-collection.update_extent_from_items()
 collection.normalize_hrefs(str(examples))
 collection.make_all_asset_hrefs_relative()
 if examples.exists():
