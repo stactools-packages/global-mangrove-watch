@@ -113,7 +113,7 @@ def create_collection() -> Collection:
         Collection: STAC Collection object
     """
     extent = Extent(
-        SpatialExtent([[-180.0, 90.0, 180.0, -90.0]]),
+        SpatialExtent([[-180.0, -90.0, 180.0, 90.0]]),
         TemporalExtent(
             [
                 [
