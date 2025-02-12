@@ -6,16 +6,23 @@
 - Name: global-mangrove-watch
 - Package: `stactools.global_mangrove_watch`
 - [stactools-global-mangrove-watch on PyPI](https://pypi.org/project/stactools-global-mangrove-watch/)
-- Owner: @githubusername
-- [Dataset homepage](http://example.com)
+- Owner: @hrodmn
+- [Dataset homepage](https://zenodo.org/records/6894273)
 - STAC extensions used:
   - [proj](https://github.com/stac-extensions/projection/)
-- Extra fields:
-  - `global-mangrove-watch:custom`: A custom attribute
+  - [version](https://github.com/stac-extensions/version/)
+  - [scientific](https://github.com/stac-extensions/scientific/)
+  - [render](https://github.com/stac-extensions/render/)
 - [Browse the example in human-readable form](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/stactools-packages/global-mangrove-watch/main/examples/collection.json)
 - [Browse a notebook demonstrating the example item and collection](https://github.com/stactools-packages/global-mangrove-watch/tree/main/docs/example.ipynb)
 
-A short description of the package and its usage.
+This package can be used to generate STAC metadata for the [Global Mangrove Watch Dataset](https://zenodo.org/records/6894273).
+
+## Details
+
+- It is assumed that the raw files have been downloaded from the source and unzipped in a persistent storage location in order to provide proper `hrefs` for the STAC assets.
+- Each item represents a particular year (1996, 2007, 2008, etc) with assets for the annual mangrove mask raster (`cog`) and the 1996-`{year}` change raster (`change_cog`).
+  - The vector files are not yet added as assets
 
 ## STAC examples
 
@@ -30,10 +37,16 @@ pip install stactools-global-mangrove-watch
 
 ## Command-line usage
 
-Description of the command line functions
+Create a collection json:
 
 ```shell
-stac global-mangrove-watch create-item source destination
+stac global-mangrove-watch create-collection {destination}
+```
+
+Create an item json:
+
+```shell
+stac global-mangrove-watch create-item {cog_asset_href} {destination}
 ```
 
 Use `stac global-mangrove-watch --help` to see all subcommands and options.

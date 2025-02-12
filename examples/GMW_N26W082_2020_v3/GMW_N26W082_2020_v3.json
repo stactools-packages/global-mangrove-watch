@@ -1,0 +1,134 @@
+{
+  "type": "Feature",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "id": "GMW_N26W082_2020_v3",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -82.0,
+          25.0
+        ],
+        [
+          -81.0,
+          25.0
+        ],
+        [
+          -81.0,
+          26.0
+        ],
+        [
+          -82.0,
+          26.0
+        ],
+        [
+          -82.0,
+          25.0
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    -82.0,
+    25.0,
+    -81.0,
+    26.0
+  ],
+  "properties": {
+    "proj:epsg": 4326,
+    "proj:geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -82.0,
+            25.000000000001
+          ],
+          [
+            -81.000000000001,
+            25.000000000001
+          ],
+          [
+            -81.000000000001,
+            26.0
+          ],
+          [
+            -82.0,
+            26.0
+          ],
+          [
+            -82.0,
+            25.000000000001
+          ]
+        ]
+      ]
+    },
+    "proj:bbox": [
+      -82.0,
+      25.000000000001,
+      -81.000000000001,
+      26.0
+    ],
+    "proj:shape": [
+      4500,
+      4500
+    ],
+    "proj:transform": [
+      0.000222222222222,
+      0.0,
+      -82.0,
+      0.0,
+      -0.000222222222222,
+      26.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "datetime": "2020-12-31T00:00:00Z"
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "Global Mangrove Watch (1996 - 2020) Version 3.0 Dataset"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "Global Mangrove Watch (1996 - 2020) Version 3.0 Dataset"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "Global Mangrove Watch (1996 - 2020) Version 3.0 Dataset"
+    }
+  ],
+  "assets": {
+    "cog": {
+      "href": "../../tests/data/GMW_N26W082_2020_v3.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Mangrove cover",
+      "description": "Gridded estimate of mangrove cover",
+      "roles": [
+        "data"
+      ]
+    },
+    "change_cog": {
+      "href": "../../tests/data/GMW_N26W082_chng_f1996_t2020_v3.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Mangrove cover change since 1996",
+      "description": "Gridded estimate of mangrove cover change since 1996",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "collection": "global-mangrove-watch-3.0"
+}

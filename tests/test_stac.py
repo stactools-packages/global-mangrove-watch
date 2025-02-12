@@ -1,4 +1,4 @@
-from stactools.global_mangrove_watch import stac
+from stactools.global_mangrove_watch import constants, stac
 
 from . import test_data
 
@@ -9,8 +9,7 @@ def test_create_collection() -> None:
 
     collection = stac.create_collection()
     collection.set_self_href(None)  # required for validation to pass
-    assert collection.id == "example-collection"
-    assert collection.extra_fields["custom_attribute"] == "foo"
+    assert collection.id == constants.COLLECTION_ID
     collection.validate()
 
 
@@ -18,7 +17,6 @@ def test_create_item() -> None:
     # This function should be updated to exercise the attributes of interest on
     # a typical item
 
-    item = stac.create_item(test_data.get_path("data/asset.tif"))
-    assert item.id == "example-item"
-    assert item.properties["custom_attribute"] == "foo"
+    item = stac.create_item(test_data.get_path("data/GMW_N26W082_2020_v3.tif"))
+    assert item.id == "GMW_N26W082_2020_v3"
     item.validate()
