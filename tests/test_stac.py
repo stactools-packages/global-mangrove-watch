@@ -19,4 +19,6 @@ def test_create_item() -> None:
 
     item = stac.create_item(test_data.get_path("data/GMW_N26W082_2020_v3.tif"))
     assert item.id == "GMW_N26W082_2020_v3"
+    assert item.bbox == (-82.0, 25.0, -81.0, 26.0)  # type: ignore
+    assert item.ext.proj.shape == constants.ITEM_SHAPE
     item.validate()

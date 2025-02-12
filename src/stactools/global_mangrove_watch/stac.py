@@ -3,7 +3,7 @@ import re
 from datetime import datetime, timezone
 from typing import Any, Dict, Optional
 
-import rio_stac
+import rasterio.transform
 import semver
 from pystac import (
     Collection,
@@ -25,7 +25,7 @@ from pystac.extensions.classification import (
 )
 from pystac.extensions.render import Render, RenderExtension
 from pystac.extensions.scientific import Publication
-from pystac.extensions.version import VERSION
+from shapely.geometry import box, mapping
 
 from stactools.global_mangrove_watch.constants import (
     CHANGE_ASSET_NAME,
@@ -34,10 +34,13 @@ from stactools.global_mangrove_watch.constants import (
     DATASET_CITATION,
     DATASET_DOI,
     DESCRIPTION,
+    EPSG,
+    ITEM_SHAPE,
     KEYWORDS,
     PUBLICATION_CITATION,
     PUBLICATION_DOI,
     TITLE,
+    VERSION,
 )
 
 
@@ -55,18 +58,18 @@ def parse_gmw_filename(cog_basename: str) -> Dict[str, Any] | None:
         lat_str, lon_str, year, version = match.groups()
 
         lat_direction = lat_str[0]
-        lat_value = int(lat_str[1:])
+        lat_value = float(lat_str[1:])
         latitude = lat_value if lat_direction == "N" else -lat_value
 
         lon_direction = lon_str[0]
-        lon_value = int(lon_str[1:])
+        lon_value = float(lon_str[1:])
         longitude = lon_value if lon_direction == "E" else -lon_value
-
+        bbox = (longitude, latitude - 1, longitude + 1, latitude)
         return {
-            "latitude": latitude,
-            "longitude": longitude,
-            "year": int(year),
+            "datetime": datetime(year=int(year), month=12, day=31, tzinfo=timezone.utc),
             "version": int(version),
+            "bbox": bbox,
+            "geometry": mapping(box(*bbox)),
         }
     else:
         return None
@@ -279,15 +282,21 @@ def create_item(
         if asset_href
     }
 
-    item = rio_stac.create_stac_item(
-        source=cog_asset_href,
+    item = Item(
         id=cog_basename.replace(".tif", ""),
+        bbox=item_attributes["bbox"],
+        geometry=item_attributes["geometry"],
+        datetime=item_attributes["datetime"],
         assets=assets,
-        with_proj=True,
-        with_raster=False,
-        input_datetime=datetime(year=item_attributes["year"], month=12, day=31),
-        raster_max_size=4500,
-        geom_precision=4,
+        properties={},
+    )
+    item.ext.add("proj")
+    item.ext.proj.apply(
+        epsg=EPSG,
+        geometry=item_attributes["geometry"],
+        bbox=item_attributes["bbox"],
+        shape=ITEM_SHAPE,
+        transform=rasterio.transform.from_bounds(*item_attributes["bbox"], *ITEM_SHAPE),
     )
 
     assert isinstance(item, Item)
