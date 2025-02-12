@@ -2494,19 +2494,6 @@ wheels = [
 ]
 
 [[package]]
-name = "rio-stac"
-version = "0.10.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "pystac" },
-    { name = "rasterio" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/93/eb/97fb6a639447d53bb42dc93699ac3dc4c226c1878e80058970b49b9e69c9/rio_stac-0.10.1.tar.gz", hash = "sha256:944285899eb10215a2c02e9cc7d1ee1afc431bbd26564e84de02710c471c1bc4", size = 13685 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/47/d2/0177091e936e4cb05addd7e0398a5a0a0a430530799bb5571ea7e73de43a/rio_stac-0.10.1-py3-none-any.whl", hash = "sha256:112d7a2278714c376a1b48088e8e678dc8a20e89458fc1df9d7f4cdfaa00c347", size = 11443 },
-]
-
-[[package]]
 name = "rpds-py"
 version = "0.22.3"
 source = { registry = "https://pypi.org/simple" }
@@ -2805,8 +2792,8 @@ name = "stactools-global-mangrove-watch"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
-    { name = "rio-stac" },
     { name = "semver" },
+    { name = "shapely" },
     { name = "stactools" },
 ]
 
@@ -2832,8 +2819,8 @@ docs = [
 
 [package.metadata]
 requires-dist = [
-    { name = "rio-stac", specifier = ">=0.10.1" },
     { name = "semver", specifier = ">=3.0.4" },
+    { name = "shapely", specifier = ">=2.0.7" },
     { name = "stactools", specifier = ">=0.4.0" },
 ]
 

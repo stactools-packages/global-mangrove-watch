@@ -47,3 +47,6 @@ The paper which goes along with this dataset is available at the following refer
 
 COG_ASSET_NAME = "cog"
 CHANGE_ASSET_NAME = "change_cog"
+
+EPSG = 4326
+ITEM_SHAPE = [4500, 4500]
