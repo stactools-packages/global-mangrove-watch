@@ -9,7 +9,9 @@ number as needed.
 
 ## [Unreleased]
 
-### Fixed
+## [0.2.0]
+
+### Changed
 
 - Dropped rio-stac in favor of generating STAC item metadata by hand ([#2](https://github.com/stactools-packages/global-mangrove-watch/pull/2))
 
@@ -19,17 +21,6 @@ number as needed.
 
 - STAC metadata capabilities for the raster assets ([#1](https://github.com/stactools-packages/global-mangrove-watch/pull/1))
 
-### Deprecated
-
-- Nothing.
-
-### Removed
-
-- Nothing.
-
-### Fixed
-
-- Nothing.
-
-[Unreleased]: <https://github.com/stactools-packages/global-mangrove-watch/tree/main/>
+[Unreleased]: <https://github.com/stactools-packages/global-mangrove-watch/compare/0.2.0...main>
+[0.2.0]: <https://github.com/stactools-packages/global-mangrove-watch/compare/0.1.0...0.2.0>
 [0.1.0]: <https://github.com/stactools-packages/global-mangrove-watch/tree/0.1.0>

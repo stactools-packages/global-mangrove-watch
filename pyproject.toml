@@ -1,6 +1,6 @@
 [project]
 name = "stactools-global-mangrove-watch"
-version = "0.1.0"
+version = "0.2.0"
 description = "A stactools package for the Global Mangrove Watch dataset"
 readme = "README.md"
 authors = [{ name = "Henry Rodman", email = "henry@developmentseed.org" }]
