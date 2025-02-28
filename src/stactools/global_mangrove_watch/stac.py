@@ -299,6 +299,21 @@ def create_item(
         transform=rasterio.transform.from_bounds(*item_attributes["bbox"], *ITEM_SHAPE),
     )
 
+    # ensure proj:epsg gets set (pystac bug)
+    item.properties["proj:epsg"] = EPSG
+
+    # we need to stick with projection extension <v2.0 in order to maintain
+    # compatibility with the STACIT driver in older GDAL versions
+    extensions = ["https://stac-extensions.github.io/projection/v1.2.0/schema.json"]
+    extensions.extend(
+        (
+            e
+            for e in item.stac_extensions
+            if not e.startswith("https://stac-extensions.github.io/projection")
+        )
+    )
+    item.stac_extensions = extensions
+
     assert isinstance(item, Item)
 
     return item

@@ -9,6 +9,12 @@ number as needed.
 
 ## [Unreleased]
 
+## [0.2.2]
+
+### Fixed
+
+- Pin projection extension to v1.2.0 for backwards compatabality with GDAL's STACIT driver
+
 ## [0.2.1]
 
 ### Fixed
