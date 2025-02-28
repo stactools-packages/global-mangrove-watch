@@ -299,6 +299,9 @@ def create_item(
         transform=rasterio.transform.from_bounds(*item_attributes["bbox"], *ITEM_SHAPE),
     )
 
+    # ensure proj:epsg gets set (pystac bug)
+    item.properties["proj:epsg"] = EPSG
+
     assert isinstance(item, Item)
 
     return item
