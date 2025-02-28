@@ -304,11 +304,15 @@ def create_item(
 
     # we need to stick with projection extension <v2.0 in order to maintain
     # compatibility with the STACIT driver in older GDAL versions
-    for i, extension in enumerate(item.stac_extensions):
-        if "projection/v2.0" in extension:
-            _extension = item.stac_extensions.pop(i)
-            item.stac_extensions.append(_extension.replace("v2.0.0", "v1.2.0"))
-            _ = item.properties.pop("proj:code")
+    extensions = ["https://stac-extensions.github.io/projection/v1.2.0/schema.json"]
+    extensions.extend(
+        (
+            e
+            for e in item.stac_extensions
+            if not e.startswith("https://stac-extensions.github.io/projection")
+        )
+    )
+    item.stac_extensions = extensions
 
     assert isinstance(item, Item)
 

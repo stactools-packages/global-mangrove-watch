@@ -39,6 +39,7 @@
     26.0
   ],
   "properties": {
+    "proj:code": "EPSG:4326",
     "proj:geometry": {
       "type": "Polygon",
       "coordinates": [
