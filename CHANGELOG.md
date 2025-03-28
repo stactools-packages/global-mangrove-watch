@@ -9,6 +9,12 @@ number as needed.
 
 ## [Unreleased]
 
+## [0.2.3]
+
+### Fixed
+
+- Add `--change-asset-href` as an optional argument to the `create-item` command
+
 ## [0.2.2]
 
 ### Fixed
@@ -33,7 +39,9 @@ number as needed.
 
 - STAC metadata capabilities for the raster assets ([#1](https://github.com/stactools-packages/global-mangrove-watch/pull/1))
 
-[Unreleased]: <https://github.com/stactools-packages/global-mangrove-watch/compare/0.2.0...main>
+[Unreleased]: <https://github.com/stactools-packages/global-mangrove-watch/compare/0.2.3...main>
+[0.2.3]: <https://github.com/stactools-packages/global-mangrove-watch/compare/0.2.2...0.2.3>
+[0.2.2]: <https://github.com/stactools-packages/global-mangrove-watch/compare/0.2.1...0.2.2>
 [0.2.1]: <https://github.com/stactools-packages/global-mangrove-watch/compare/0.2.0...0.2.1>
 [0.2.0]: <https://github.com/stactools-packages/global-mangrove-watch/compare/0.1.0...0.2.0>
 [0.1.0]: <https://github.com/stactools-packages/global-mangrove-watch/tree/0.1.0>
