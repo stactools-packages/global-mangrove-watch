@@ -40,16 +40,22 @@ pip install stactools-global-mangrove-watch
 Create a collection json:
 
 ```shell
-stac global-mangrove-watch create-collection {destination}
+stac globalmangrovewatch create-collection {destination}
 ```
 
 Create an item json:
 
 ```shell
-stac global-mangrove-watch create-item {cog_asset_href} {destination}
+stac globalmangrovewatch create-item {cog_asset_href} {destination}
 ```
 
-Use `stac global-mangrove-watch --help` to see all subcommands and options.
+Create an item json with the change asset added
+
+```shell
+stac globalmangrovewatch create-item {cog_asset_href} {destination} --change-asset-href {change_asset_href}
+```
+
+Use `stac globalmangrovewatch --help` to see all subcommands and options.
 
 ## Contributing
 
