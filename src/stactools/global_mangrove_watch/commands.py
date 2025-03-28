@@ -1,4 +1,5 @@
 import logging
+from typing import Optional
 
 import click
 from click import Command, Group
@@ -34,16 +35,24 @@ def create_globalmangrovewatch_command(cli: Group) -> Command:
         collection.save_object()
 
     @globalmangrovewatch.command("create-item", short_help="Create a STAC item")
-    @click.argument("source")
+    @click.argument("cog_asset_href")
     @click.argument("destination")
-    def create_item_command(source: str, destination: str) -> None:
+    @click.option("--change-asset-href", type=str)
+    def create_item_command(
+        cog_asset_href: str, destination: str, change_asset_href: Optional[str] = None
+    ) -> None:
         """Creates a STAC Item
 
         Args:
-            source: HREF of the Asset associated with the Item
+            cog_asset_href: HREF of the COG asset associated with the Item
             destination: An HREF for the STAC Item
+            change_asset_href: Optional HREF to the change asset associated with the
+              Item
         """
-        item = stac.create_item(source)
+        item = stac.create_item(
+            cog_asset_href=cog_asset_href,
+            change_asset_href=change_asset_href,
+        )
         item.save_object(dest_href=destination)
 
     return globalmangrovewatch
